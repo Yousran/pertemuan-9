@@ -37,11 +37,11 @@ export default function ExperiencesPage() {
       </header>
       <section className="pb-20" aria-label="Experience">
         <div className="mb-5 mt-12 flex items-end justify-between gap-6 max-sm:items-start">
-          <h2 className="text-xl font-bold tracking-tight">Experience <span className="text-xs font-normal text-[#65716a]">({experience.length})</span></h2>
+          <h2 className="text-xl font-bold tracking-tight">Experiences <span className="text-xs font-normal text-[#65716a]">({experiences.length})</span></h2>
           <button className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[#17251f] px-5 text-sm font-bold text-white transition hover:bg-[#2d4439]" type="button" onClick={() => setDialog({ type: "create" })}><span className="text-xl leading-none text-[#d6f36a]">+</span> Add experience</button>
         </div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {experience.length === 0 ? <p className="col-span-full rounded-2xl border border-dashed border-[#b9c1b7] px-5 py-12 text-center text-sm text-[#65716a]">Nothing here yet. Add your first experience to get started.</p> : experiences.map((item) => <ExperienceCard key={item.id} item={item} onEdit={(record) => setDialog({ type: "update", record })} onDelete={(record) => setDialog({ type: "delete", record })} />)}
+          {experiences.length === 0 ? <p className="col-span-full rounded-2xl border border-dashed border-[#b9c1b7] px-5 py-12 text-center text-sm text-[#65716a]">Nothing here yet. Add your first experience to get started.</p> : experiences.map((item) => <ExperienceCard key={item.id} item={item} onEdit={(record) => setDialog({ type: "update", record })} onDelete={(record) => setDialog({ type: "delete", record })} />)}
         </div>
       </section>
       {dialog?.type === "create" && <CreateExperienceDialog onCreate={handleExperienceCreate} onClose={() => setDialog(null)} />}
