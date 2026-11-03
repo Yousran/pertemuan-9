@@ -37,8 +37,10 @@ export default function ProjectsPage() {
       </header>
       <section className="pb-20" aria-label="Projects">
         <div className="mb-5 mt-12 flex items-end justify-between gap-6 max-sm:items-start">
-          <h2 className="text-xl font-bold tracking-tight">Projects <span className="text-xs font-normal text-[#65716a]">({projects.length})</span></h2>
-          <button className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[#17251f] px-5 text-sm font-bold text-white transition hover:bg-[#2d4439]" type="button" onClick={() => setDialog({ type: "create" })}><span className="text-xl leading-none text-[#d6f36a]">+</span> Add project</button>
+          <h2 className="text-xl font-bold tracking-tight">Projects <span className="text-xs font-normal text-[#65716a]">
+            ({projects.length})</span></h2>
+          <button className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[#17251f] px-5 text-sm font-bold text-white transition hover:bg-[#2d4439]" type="button" onClick={() => setDialog({ type: "create" })}>
+            <span className="text-xl leading-none text-[#d6f36a]">+</span> Add project</button>
         </div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {projects.length === 0 ? <p className="col-span-full rounded-2xl border border-dashed border-[#b9c1b7] px-5 py-12 text-center text-sm text-[#65716a]">Nothing here yet. Add your first project to get started.</p> : projects.map((project) => <ProjectCard key={project.id} project={project} onEdit={(record) => setDialog({ type: "update", record })} onDelete={(record) => setDialog({ type: "delete", record })} />)}

@@ -18,7 +18,8 @@ export default function ExperiencesPage() {
       </header>
       <section className="pb-20" aria-label="Experience">
         <div className="mb-5 mt-12 flex items-end justify-between gap-6 max-sm:items-start">
-          <h2 className="text-xl font-bold tracking-tight">Experiences <span className="text-xs font-normal text-[#65716a]">({experiences.length})</span></h2>
+          <h2 className="text-xl font-bold tracking-tight">Experiences <span className="text-xs font-normal text-[#65716a]">
+            ({experiences.length})</span></h2>
           <CreateExperienceDialog/>
         </div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">

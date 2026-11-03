@@ -4,7 +4,7 @@ import { useState } from "react";
 import UpdateSkillDialog from "./UpdateSkillDialog";
 import DeleteSkillDialog from "./DeleteSkillDialog";
 
-export default function SkillCard({ skill, onEdit, onDelete }) {
+export default function SkillCard({ skill }) {
   const [dialog, setDialog] = useState(null);
   return (
     <>

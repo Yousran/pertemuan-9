@@ -18,11 +18,17 @@ export default function SkillsPage() {
       </header>
       <section className="pb-20" aria-label="Skills">
         <div className="mb-5 mt-12 flex items-end justify-between gap-6 max-sm:items-start">
-          <h2 className="text-xl font-bold tracking-tight">Skills <span className="text-xs font-normal text-[#65716a]">({skills.length})</span></h2>
+          <h2 className="text-xl font-bold tracking-tight">Skills 
+            <span className="text-xs font-normal text-[#65716a]">({skills.length})</span>
+          </h2>
           <CreateSkillDialog />
         </div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {skills.length === 0 ? <p className="col-span-full rounded-2xl border border-dashed border-[#b9c1b7] px-5 py-12 text-center text-sm text-[#65716a]">Nothing here yet. Add your first skill to get started.</p> : skills.map((skill) => <SkillCard key={skill.id} skill={skill} />)}
+          {skills.length === 0 
+          ? <p className="col-span-full rounded-2xl border border-dashed border-[#b9c1b7] px-5 py-12 text-center text-sm text-[#65716a]">Nothing here yet. Add your first skill to get started.</p> 
+          : skills.map((item) => 
+            <SkillCard key={item.id} skill={item} />
+          )}
         </div>
       </section>
     </main>
