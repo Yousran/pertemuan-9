@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <main className="mx-auto w-full max-w-6xl flex-1 px-6">
       <section className="grid grid-cols-1 items-center gap-10 py-20 lg:grid-cols-3 lg:gap-12 lg:py-32">
-        <div>
+        <div className="lg:col-span-2">
           <p className="mb-4 text-xs font-extrabold uppercase tracking-widest text-[#738a36]">Independent designer &amp; builder · Jakarta</p>
           <h1 className="max-w-4xl text-5xl font-bold leading-none tracking-tight sm:text-6xl lg:text-7xl">Making digital things feel a little more <span className="underline decoration-[#9bb34b] decoration-4 underline-offset-4">human.</span></h1>
           <p className="mt-6 max-w-2xl text-base leading-7 text-[#65716a]">I&apos;m Anu, a designer who likes clear ideas, thoughtful details, and building things that make everyday life better.</p>
