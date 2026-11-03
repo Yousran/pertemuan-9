@@ -2,14 +2,8 @@
 
 import { useState } from "react";
 
-const fields = [
-  { name: "title", label: "Project title" },
-  { name: "description", label: "Description", type: "textarea" },
-  { name: "thumbnail", label: "Thumbnail image URL", type: "url" },
-];
-
 export default function CreateProjectDialog({ onCreate, onClose }) {
-  const [values, setValues] = useState(Object.fromEntries(fields.map((field) => [field.name, ""])));
+  const [values, setValues] = useState({ title: "", description: "", thumbnail: "" });
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -24,10 +18,9 @@ export default function CreateProjectDialog({ onCreate, onClose }) {
         <h2 className="text-2xl font-bold tracking-tight" id="create-project-title">Add project</h2>
         <p className="mb-5 mt-2 text-sm leading-6 text-[#65716a]">Add the details for this new project.</p>
         <form onSubmit={handleSubmit}>
-          {fields.map((field) => <div className="my-4 grid gap-2" key={field.name}>
-            <label className="text-xs font-extrabold" htmlFor={`create-project-${field.name}`}>{field.label}</label>
-            {field.type === "textarea" ? <textarea className="min-h-24 w-full resize-y rounded-lg border border-[#cbd2c8] bg-white px-3 py-3 text-sm outline-none focus:border-[#718b31] focus:ring-4 focus:ring-[#d6f36a]/40" id={`create-project-${field.name}`} required={field.required !== false} value={values[field.name] ?? ""} onChange={(event) => setValues({ ...values, [field.name]: event.target.value })} /> : <input className="w-full rounded-lg border border-[#cbd2c8] bg-white px-3 py-3 text-sm outline-none focus:border-[#718b31] focus:ring-4 focus:ring-[#d6f36a]/40" id={`create-project-${field.name}`} type={field.type ?? "text"} required={field.required !== false} value={values[field.name] ?? ""} onChange={(event) => setValues({ ...values, [field.name]: event.target.value })} />}
-          </div>)}
+          <div className="my-4 grid gap-2"><label className="text-xs font-extrabold" htmlFor="create-project-title-input">Project title</label><input className="w-full rounded-lg border border-[#cbd2c8] bg-white px-3 py-3 text-sm outline-none focus:border-[#718b31] focus:ring-4 focus:ring-[#d6f36a]/40" id="create-project-title-input" required value={values.title} onChange={(event) => setValues({ ...values, title: event.target.value })} /></div>
+          <div className="my-4 grid gap-2"><label className="text-xs font-extrabold" htmlFor="create-project-description">Description</label><textarea className="min-h-24 w-full resize-y rounded-lg border border-[#cbd2c8] bg-white px-3 py-3 text-sm outline-none focus:border-[#718b31] focus:ring-4 focus:ring-[#d6f36a]/40" id="create-project-description" required value={values.description} onChange={(event) => setValues({ ...values, description: event.target.value })} /></div>
+          <div className="my-4 grid gap-2"><label className="text-xs font-extrabold" htmlFor="create-project-thumbnail">Thumbnail image URL</label><input className="w-full rounded-lg border border-[#cbd2c8] bg-white px-3 py-3 text-sm outline-none focus:border-[#718b31] focus:ring-4 focus:ring-[#d6f36a]/40" id="create-project-thumbnail" type="url" required value={values.thumbnail} onChange={(event) => setValues({ ...values, thumbnail: event.target.value })} /></div>
           <div className="mt-6 flex justify-end gap-2">
             <button className="inline-flex min-h-10 items-center justify-center rounded-full border border-[#d9ded7] px-4 text-sm font-bold text-[#17251f] hover:bg-[#eeece5]" type="button" onClick={onClose}>Cancel</button>
             <button className="inline-flex min-h-10 items-center justify-center rounded-full bg-[#17251f] px-4 text-sm font-bold text-white hover:bg-[#2d4439]" type="submit">Create project</button>
