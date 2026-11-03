@@ -6,26 +6,26 @@ import CreateExperienceDialog from "@/components/CreateExperienceDialog";
 import UpdateExperienceDialog from "@/components/UpdateExperienceDialog";
 import DeleteExperienceDialog from "@/components/DeleteExperienceDialog";
 
-const initialExperience = [
+const initialExperiences = [
   { id: 1, role: "Senior Product Designer", company: "Northstar Studio", dates: "2023 — Present", description: "Leading product design for early-stage teams, from first sketches to polished launches." },
   { id: 2, role: "Product Designer", company: "Common Practice", dates: "2020 — 2023", description: "Designed accessible digital products and helped establish a collaborative design practice." },
   { id: 3, role: "Visual Designer", company: "Studio Kecil", dates: "2018 — 2020", description: "Built visual identities and web experiences for independent businesses and cultural projects." },
 ];
 
-export default function ExperiencePage() {
-  const [experience, setExperience] = useState(initialExperience);
+export default function ExperiencesPage() {
+  const [experiences, setExperiences] = useState(initialExperiences);
   const [dialog, setDialog] = useState(null);
 
   function handleExperienceCreate(values) {
-    setExperience((current) => [...current, { ...values, id: Date.now() }]);
+    setExperiences((current) => [...current, { ...values, id: Date.now() }]);
   }
 
   function handleExperienceUpdate(id, values) {
-    setExperience((current) => current.map((item) => item.id === id ? { ...item, ...values } : item));
+    setExperiences((current) => current.map((item) => item.id === id ? { ...item, ...values } : item));
   }
 
   function handleExperienceDelete(id) {
-    setExperience((current) => current.filter((item) => item.id !== id));
+    setExperiences((current) => current.filter((item) => item.id !== id));
   }
 
   return (
@@ -41,7 +41,7 @@ export default function ExperiencePage() {
           <button className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[#17251f] px-5 text-sm font-bold text-white transition hover:bg-[#2d4439]" type="button" onClick={() => setDialog({ type: "create" })}><span className="text-xl leading-none text-[#d6f36a]">+</span> Add experience</button>
         </div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {experience.length === 0 ? <p className="col-span-full rounded-2xl border border-dashed border-[#b9c1b7] px-5 py-12 text-center text-sm text-[#65716a]">Nothing here yet. Add your first experience to get started.</p> : experience.map((item) => <ExperienceCard key={item.id} item={item} onEdit={(record) => setDialog({ type: "update", record })} onDelete={(record) => setDialog({ type: "delete", record })} />)}
+          {experience.length === 0 ? <p className="col-span-full rounded-2xl border border-dashed border-[#b9c1b7] px-5 py-12 text-center text-sm text-[#65716a]">Nothing here yet. Add your first experience to get started.</p> : experiences.map((item) => <ExperienceCard key={item.id} item={item} onEdit={(record) => setDialog({ type: "update", record })} onDelete={(record) => setDialog({ type: "delete", record })} />)}
         </div>
       </section>
       {dialog?.type === "create" && <CreateExperienceDialog onCreate={handleExperienceCreate} onClose={() => setDialog(null)} />}

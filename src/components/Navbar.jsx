@@ -7,7 +7,7 @@ const navigation = [
   { label: "Overview", href: "/" },
   { label: "Projects", href: "/projects" },
   { label: "Skills", href: "/skills" },
-  { label: "Experience", href: "/experience" },
+  { label: "Experiences", href: "/experiences" },
 ];
 
 export default function Navbar() {
